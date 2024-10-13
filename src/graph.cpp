@@ -1,10 +1,4 @@
 #include "graph.h"
-#include <fstream>
-#include <sstream>
-using std::ifstream;
-using std::stringstream;
-using std::cout;
-using std::endl;
 
 Graph::Graph(const string& csv, const string& adjacencies){
     parseCSV(csv);

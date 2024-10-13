@@ -5,9 +5,15 @@
 #include <string>
 #include <unordered_map>
 #include <iostream>
+#include <fstream>
+#include <sstream>
 using std::vector;
 using std::string;
 using std::unordered_map;
+using std::ifstream;
+using std::stringstream;
+using std::cout;
+using std::endl;
 
 class Graph {
 private:
@@ -22,4 +28,4 @@ public:
     void printGraph();
 };
 
-#endif GRAPH_H
+#endif
