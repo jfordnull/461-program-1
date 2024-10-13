@@ -14,6 +14,7 @@ using std::ifstream;
 using std::stringstream;
 using std::cout;
 using std::endl;
+using std::pair;
 
 class Graph {
 private:
@@ -26,9 +27,9 @@ private:
 public:
     Graph(const string& csv, const string& adjacencies);
     int getCityIndex(const string& city) const;
-    string getCityName(int i) const {return indexToCity[i];}
-    const vector<vector<int>>& getAdjList() const {return adjList;}
+    const vector<vector<int>>& getAdjList() {return adjList;}
     void printGraph() const;
+    void printRoute(const vector<int>& route) const;
 };
 
 #endif

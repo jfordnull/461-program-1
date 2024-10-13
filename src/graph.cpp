@@ -54,3 +54,8 @@ int Graph::getCityIndex(const string& city) const{
     if(it!=cityMap.end()){return it->second;}
     else{throw runtime_error(city + " not found in map.");}
 }
+
+void Graph::printRoute(const vector<int>& route) const{
+    for(int city : route){cout << indexToCity[city] << " -> ";}
+    cout << "EOR" << endl;
+}
