@@ -1,20 +1,7 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
-#include <vector>
-#include <string>
-#include <unordered_map>
-#include <iostream>
-#include <fstream>
-#include <sstream>
-using std::vector;
-using std::string;
-using std::unordered_map;
-using std::ifstream;
-using std::stringstream;
-using std::cout;
-using std::endl;
-using std::pair;
+#include "util.h"
 
 class Graph {
 private:

@@ -1,8 +1,5 @@
 #include "graph.h"
 #include "bfs.h"
-#include <iostream>
-using std::cout;
-using std::endl;
 
 int main(){
     string csvFile = "src/coordinates.csv";

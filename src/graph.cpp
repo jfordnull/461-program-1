@@ -1,6 +1,4 @@
 #include "graph.h"
-#include <stdexcept>
-using std::runtime_error;
 
 Graph::Graph(const string& csv, const string& adjacencies){
     parseCSV(csv);
