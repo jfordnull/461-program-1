@@ -25,7 +25,10 @@ private:
     vector<string> indexToCity;
 public:
     Graph(const string& csv, const string& adjacencies);
-    void printGraph();
+    int getCityIndex(const string& city) const;
+    string getCityName(int i) const {return indexToCity[i];}
+    const vector<vector<int>>& getAdjList() const {return adjList;}
+    void printGraph() const;
 };
 
 #endif

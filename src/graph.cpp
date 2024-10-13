@@ -1,4 +1,6 @@
 #include "graph.h"
+#include <stdexcept>
+using std::runtime_error;
 
 Graph::Graph(const string& csv, const string& adjacencies){
     parseCSV(csv);
@@ -39,10 +41,16 @@ void Graph::parseAdjacencies(const string& fileName){
     file.close();
 }
 
-void Graph::printGraph(){
+void Graph::printGraph() const{
     for(int i = 0; i < adjList.size(); i++){
         cout << indexToCity[i] << " -> ";
         for(int neighbor : adjList[i]){cout << indexToCity[neighbor] << " ";}
         cout << endl;
     }
+}
+
+int Graph::getCityIndex(const string& city) const{
+    auto it = cityMap.find(city);
+    if(it!=cityMap.end()){return it->second;}
+    else{throw runtime_error(city + " not found in map.");}
 }
