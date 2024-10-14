@@ -6,10 +6,10 @@ BUILD_DIR = build
 TARGET = $(BUILD_DIR)/main
 
 # Source files
-SRCS = $(SRC_DIR)/main.cpp $(SRC_DIR)/graph.cpp $(SRC_DIR)/bfs.cpp $(SRC_DIR)/util.h
+SRCS = $(SRC_DIR)/main.cpp $(SRC_DIR)/graph.cpp $(SRC_DIR)/bfs.cpp $(SRC_DIR)/dfs.cpp
 
 # Object files
-OBJS = $(BUILD_DIR)/main.o $(BUILD_DIR)/graph.o $(BUILD_DIR)/bfs.o
+OBJS = $(BUILD_DIR)/main.o $(BUILD_DIR)/graph.o $(BUILD_DIR)/bfs.o $(BUILD_DIR)/dfs.o
 
 all: $(TARGET)
 
@@ -26,7 +26,12 @@ $(BUILD_DIR)/graph.o: $(SRC_DIR)/graph.cpp
 	$(CXX) $(CXXFLAGS) -c $(SRC_DIR)/graph.cpp -o $(BUILD_DIR)/graph.o
 
 $(BUILD_DIR)/bfs.o: $(SRC_DIR)/bfs.cpp
+	mkdir -p $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) -c $(SRC_DIR)/bfs.cpp -o $(BUILD_DIR)/bfs.o
+
+$(BUILD_DIR)/dfs.o: $(SRC_DIR)/dfs.cpp
+	mkdir -p $(BUILD_DIR)
+	$(CXX) $(CXXFLAGS) -c $(SRC_DIR)/dfs.cpp -o $(BUILD_DIR)/dfs.o
 
 clean:
 	rm -rf $(BUILD_DIR)
