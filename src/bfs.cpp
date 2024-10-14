@@ -17,7 +17,7 @@ pair<vector<int>,int> bfs(const vector<vector<int>>& adjList, int src, int dest)
         // Reconstruct path when we reach dest
         if(u == dest){
             vector<int> path;
-            for(int i = dest; i != -1; i = parent[i]){path.push_back(i);}
+            for(int i = dest; i != -1; i = parent[i]) path.push_back(i);
             reverse(path.begin(), path.end());
             auto end = high_resolution_clock::now();
             int delta = duration_cast<microseconds>(end - start).count();
