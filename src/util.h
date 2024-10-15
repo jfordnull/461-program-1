@@ -12,6 +12,7 @@
 #include <stdexcept>
 #include <cmath>
 #include <climits>
+#include <limits>
 using std::cout;
 using std::endl;
 using std::vector;
@@ -26,6 +27,8 @@ using std::runtime_error;
 using std::greater;
 using std::priority_queue;
 using std::stof;
+using std::cin;
+using std::numeric_limits;
 
 #include "chrono"
 using namespace std::chrono;
