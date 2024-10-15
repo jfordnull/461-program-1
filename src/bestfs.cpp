@@ -1,26 +1,10 @@
 #include "bestfs.h"
-
-// Heuristic := Euclidian distance
-double heuristic(int node, int dest, const vector<pair<float,float>>& coordinates){
-    float dx = coordinates[node].first - coordinates[dest].first;
-    float dy = coordinates[node].second - coordinates[dest].second;
-    return sqrt(dx * dx + dy * dy);
-}
-
-struct Node{
-    int vertex;
-    double heursticValue;
-
-    bool operator > (const Node& other) const{
-        return heursticValue > other.heursticValue;
-    }
-};
+#include "heuristic.h"
 
 pair<vector<int>,int> bestFS(const vector<vector<int>>& adjList, const vector<pair<float,float>>& coordinates, int src, int dest){
     vector<bool> visited(adjList.size(),false);
     vector<int> parent(adjList.size(),-1);
-    vector<double> heuristics(adjList.size());
-    for(int i = 0; i < adjList.size(); i++) heuristics[i] = heuristic(i, dest, coordinates);
+    vector<float> heuristics = generateHeuristics(coordinates, dest);
     priority_queue<Node, vector<Node>, greater<Node>> pq;
     pq.push({src, heuristics[src]});
     
