@@ -10,6 +10,7 @@
 #include <sstream>
 #include <algorithm>
 #include <stdexcept>
+#include <cmath>
 using std::cout;
 using std::endl;
 using std::vector;

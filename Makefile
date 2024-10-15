@@ -6,10 +6,10 @@ BUILD_DIR = build
 TARGET = $(BUILD_DIR)/main
 
 # Source files
-SRCS = $(SRC_DIR)/main.cpp $(SRC_DIR)/graph.cpp $(SRC_DIR)/bfs.cpp $(SRC_DIR)/dfs.cpp $(SRC_DIR)/iddfs.cpp
+SRCS = $(SRC_DIR)/main.cpp $(SRC_DIR)/graph.cpp $(SRC_DIR)/bfs.cpp $(SRC_DIR)/dfs.cpp $(SRC_DIR)/iddfs.cpp $(SRC_DIR)/bestfs.cpp
 
 # Object files
-OBJS = $(BUILD_DIR)/main.o $(BUILD_DIR)/graph.o $(BUILD_DIR)/bfs.o $(BUILD_DIR)/dfs.o $(BUILD_DIR)/iddfs.o
+OBJS = $(BUILD_DIR)/main.o $(BUILD_DIR)/graph.o $(BUILD_DIR)/bfs.o $(BUILD_DIR)/dfs.o $(BUILD_DIR)/iddfs.o $(BUILD_DIR)/bestfs.o
 
 all: $(TARGET)
 
@@ -36,6 +36,10 @@ $(BUILD_DIR)/dfs.o: $(SRC_DIR)/dfs.cpp
 $(BUILD_DIR)/iddfs.o: $(SRC_DIR)/iddfs.cpp
 	mkdir -p $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) -c $(SRC_DIR)/iddfs.cpp -o $(BUILD_DIR)/iddfs.o
+
+$(BUILD_DIR)/bestfs.o: $(SRC_DIR)/bestfs.cpp
+	mkdir -p $(BUILD_DIR)
+	$(CXX) $(CXXFLAGS) -c $(SRC_DIR)/bestfs.cpp -o $(BUILD_DIR)/bestfs.o
 
 clean:
 	rm -rf $(BUILD_DIR)

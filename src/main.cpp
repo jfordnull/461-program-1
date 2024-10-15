@@ -2,6 +2,7 @@
 #include "bfs.h"
 #include "dfs.h"
 #include "iddfs.h"
+#include "bestfs.h"
 
 int main(){
     string csvFile = "input/coordinates.csv";
@@ -25,4 +26,9 @@ int main(){
     pair<vector<int>,int> iddfsResults = iddfs(adjList, cityA, cityB, maxDepth);
     graph.printRoute(iddfsResults.first);
     cout << "IDDFS execution time (max depth := " << maxDepth << " ): " << iddfsResults.second << " microseconds" << endl;
+
+    const vector<pair<float,float>> coord = graph.getCoordinates();
+    pair<vector<int>,int> bestfsResults = bestFS(adjList, coord, cityA, cityB);
+    graph.printRoute(bestfsResults.first);
+    cout << "BestFS execution time: " << bestfsResults.second << " microseconds" << endl;
 }
