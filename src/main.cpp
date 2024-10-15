@@ -3,6 +3,7 @@
 #include "dfs.h"
 #include "iddfs.h"
 #include "bestfs.h"
+#include "astar.h"
 
 int main(){
     string csvFile = "input/coordinates.csv";
@@ -12,7 +13,7 @@ int main(){
 
     const vector<vector<int>> adjList = graph.getAdjList();
     int cityA = graph.getCityIndex("Augusta");
-    int cityB = graph.getCityIndex("Cheney");
+    int cityB = graph.getCityIndex("Zenda");
 
     pair<vector<int>,int> bfsResults = bfs(adjList, cityA, cityB);
     graph.printRoute(bfsResults.first);
@@ -31,4 +32,8 @@ int main(){
     pair<vector<int>,int> bestfsResults = bestFS(adjList, coord, cityA, cityB);
     graph.printRoute(bestfsResults.first);
     cout << "BestFS execution time: " << bestfsResults.second << " microseconds" << endl;
+
+    pair<vector<int>,int> astarResults = aStar(adjList, coord, cityA, cityB);
+    graph.printRoute(astarResults.first);
+    cout << "A* execution time: " << astarResults.second << " microseconds" << endl;
 }

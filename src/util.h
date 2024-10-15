@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <stdexcept>
 #include <cmath>
+#include <climits>
 using std::cout;
 using std::endl;
 using std::vector;

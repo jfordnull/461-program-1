@@ -6,10 +6,10 @@ BUILD_DIR = build
 TARGET = $(BUILD_DIR)/main
 
 # Source files
-SRCS = $(SRC_DIR)/main.cpp $(SRC_DIR)/graph.cpp $(SRC_DIR)/bfs.cpp $(SRC_DIR)/dfs.cpp $(SRC_DIR)/iddfs.cpp $(SRC_DIR)/bestfs.cpp $(SRC_DIR)/heuristic.cpp
+SRCS = $(SRC_DIR)/main.cpp $(SRC_DIR)/graph.cpp $(SRC_DIR)/bfs.cpp $(SRC_DIR)/dfs.cpp $(SRC_DIR)/iddfs.cpp $(SRC_DIR)/bestfs.cpp $(SRC_DIR)/heuristic.cpp $(SRC_DIR)/astar.cpp
 
 # Object files
-OBJS = $(BUILD_DIR)/main.o $(BUILD_DIR)/graph.o $(BUILD_DIR)/bfs.o $(BUILD_DIR)/dfs.o $(BUILD_DIR)/iddfs.o $(BUILD_DIR)/bestfs.o $(BUILD_DIR)/heuristic.o
+OBJS = $(BUILD_DIR)/main.o $(BUILD_DIR)/graph.o $(BUILD_DIR)/bfs.o $(BUILD_DIR)/dfs.o $(BUILD_DIR)/iddfs.o $(BUILD_DIR)/bestfs.o $(BUILD_DIR)/heuristic.o $(BUILD_DIR)/astar.o
 
 all: $(TARGET)
 
@@ -44,6 +44,10 @@ $(BUILD_DIR)/bestfs.o: $(SRC_DIR)/bestfs.cpp
 $(BUILD_DIR)/heuristic.o: $(SRC_DIR)/heuristic.cpp
 	mkdir -p $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) -c $(SRC_DIR)/heuristic.cpp -o $(BUILD_DIR)/heuristic.o
+
+$(BUILD_DIR)/astar.o: $(SRC_DIR)/astar.cpp
+	mkdir -p $(BUILD_DIR)
+	$(CXX) $(CXXFLAGS) -c $(SRC_DIR)/astar.cpp -o $(BUILD_DIR)/astar.o
 
 clean:
 	rm -rf $(BUILD_DIR)
