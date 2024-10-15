@@ -1,15 +1,15 @@
 #include "bestfs.h"
 
 // Heuristic := Euclidian distance
-int heuristic(int node, int dest, const vector<pair<float,float>>& coordinates){
+double heuristic(int node, int dest, const vector<pair<float,float>>& coordinates){
     float dx = coordinates[node].first - coordinates[dest].first;
     float dy = coordinates[node].second - coordinates[dest].second;
-    return static_cast<int>(sqrt(dx * dx + dy * dy));
+    return sqrt(dx * dx + dy * dy);
 }
 
 struct Node{
     int vertex;
-    int heursticValue;
+    double heursticValue;
 
     bool operator > (const Node& other) const{
         return heursticValue > other.heursticValue;
@@ -19,9 +19,11 @@ struct Node{
 pair<vector<int>,int> bestFS(const vector<vector<int>>& adjList, const vector<pair<float,float>>& coordinates, int src, int dest){
     vector<bool> visited(adjList.size(),false);
     vector<int> parent(adjList.size(),-1);
+    vector<double> heuristics(adjList.size());
+    for(int i = 0; i < adjList.size(); i++) heuristics[i] = heuristic(i, dest, coordinates);
     priority_queue<Node, vector<Node>, greater<Node>> pq;
-    pq.push({src, heuristic(src, dest, coordinates)});
-
+    pq.push({src, heuristics[src]});
+    
     auto start = high_resolution_clock::now();
     while(!pq.empty()){
         Node currentNode = pq.top();
@@ -44,7 +46,7 @@ pair<vector<int>,int> bestFS(const vector<vector<int>>& adjList, const vector<pa
         // Explore neighbors
         for(int neighbor : adjList[u]){
             if(!visited[neighbor]){
-                pq.push({neighbor, heuristic(neighbor, dest, coordinates)});
+                pq.push({neighbor, heuristics[neighbor]});
                 parent[neighbor] = u;
             }
         }
