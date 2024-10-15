@@ -21,6 +21,9 @@ using std::ifstream;
 using std::stringstream;
 using std::reverse;
 using std::runtime_error;
+using std::greater;
+using std::priority_queue;
+using std::stof;
 
 #include "chrono"
 using namespace std::chrono;

@@ -17,11 +17,16 @@ void Graph::parseCSV(const string& fileName){
     if(!file.is_open()){return;}
     while(getline(file, line)){
         stringstream ss(line);
-        string city;
+        string city, x, y;
         if(getline(ss, city, ',')){
-            cityMap[city]=i++;
-            indexToCity.push_back(city);
-            adjList.push_back({});
+            if(getline(ss, x, ',')){
+                if(getline(ss,y,',')){
+                    cityMap[city]=i++;
+                    indexToCity.push_back(city);
+                    adjList.push_back({});
+                    coordinates.push_back({stof(x),stof(y)});
+                }
+            }
         }
     }
     file.close();
